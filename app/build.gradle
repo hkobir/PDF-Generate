@@ -26,4 +26,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.itextpdf:itextpdf:5.5.13.1'  //itextPdf
+    implementation 'com.karumi:dexter:6.0.0'  //runtime Permission
 }
