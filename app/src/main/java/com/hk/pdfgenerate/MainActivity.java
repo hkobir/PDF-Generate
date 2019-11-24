@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             // Adding Title....
             Font titleFont = new Font(baseFont, 35.0f, Font.NORMAL, colorAccent);
             addnewItem(document, "Order Details", Element.ALIGN_CENTER, titleFont);
+            addLineSeparator(document);
 
             //documents
             Font orderNumberFont = new Font(baseFont, fontSize, Font.NORMAL, colorAccent);   //order no
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             // LINE SEPARATOR
             addLineSeparator(document);
             addLineSpace(document);
+
 
             addnewItem(document, "Product Details: ", Element.ALIGN_CENTER, titleFont);
             // LINE SEPARATOR
