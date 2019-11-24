@@ -3,6 +3,7 @@ package com.hk.pdfgenerate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.print.PrintAttributes;
@@ -48,11 +49,15 @@ public class MainActivity extends AppCompatActivity {
     DateFormat df = new SimpleDateFormat("dd/MM/yy");
     Date dateobj = new Date();
     private String date = df.format(dateobj);
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage("Please wait...");
+
         generateBtn = findViewById(R.id.generateButton);
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -64,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         generateBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                progressDialog.show();
 
                                 createPDF(Common.getAppPath(MainActivity.this) + "1234_invoice.pdf");
 
@@ -158,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
             document.close();
 
             Toast.makeText(this, "Invoice create successfully", Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
 
             printPdf();
 
